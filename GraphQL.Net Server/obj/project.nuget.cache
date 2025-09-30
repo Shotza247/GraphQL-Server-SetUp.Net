@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "LYRGkGdNybQ=",
+  "dgSpecHash": "eIjDDSOAdR4=",
   "success": true,
   "projectFilePath": "C:\\Users\\RomeoNdlovu\\Downloads\\Grad skills\\Role Based\\GraphQL Server SetUp.Net\\GraphQL.Net Server\\GraphQL.Net Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\chillicream.nitro.app\\28.0.7\\chillicream.nitro.app.28.0.7.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\greendonut\\15.1.10\\greendonut.15.1.10.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\greendonut.abstractions\\15.1.10\\greendonut.abstractions.15.1.10.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\greendonut.data\\15.1.10\\greendonut.data.15.1.10.nupkg.sha512",
@@ -15,6 +16,7 @@
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\hotchocolate.aspnetcore\\15.1.10\\hotchocolate.aspnetcore.15.1.10.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\hotchocolate.authorization\\15.1.10\\hotchocolate.authorization.15.1.10.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\hotchocolate.costanalysis\\15.1.10\\hotchocolate.costanalysis.15.1.10.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\hotchocolate.data\\15.1.10\\hotchocolate.data.15.1.10.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\hotchocolate.execution\\15.1.10\\hotchocolate.execution.15.1.10.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\hotchocolate.execution.abstractions\\15.1.10\\hotchocolate.execution.abstractions.15.1.10.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\hotchocolate.execution.projections\\15.1.10\\hotchocolate.execution.projections.15.1.10.nupkg.sha512",
@@ -42,12 +44,25 @@
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\hotchocolate.validation\\15.1.10\\hotchocolate.validation.15.1.10.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\9.0.2\\microsoft.extensions.dependencyinjection.9.0.2.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\9.0.2\\microsoft.extensions.dependencyinjection.abstractions.9.0.2.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\2.0.0\\microsoft.extensions.logging.abstractions.2.0.0.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\microsoft.extensions.objectpool\\9.0.2\\microsoft.extensions.objectpool.9.0.2.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\microsoft.extensions.options\\9.0.2\\microsoft.extensions.options.9.0.2.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\microsoft.extensions.primitives\\9.0.2\\microsoft.extensions.primitives.9.0.2.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\mongodb.bson\\3.5.0\\mongodb.bson.3.5.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\mongodb.driver\\3.5.0\\mongodb.driver.3.5.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\sharpcompress\\0.30.1\\sharpcompress.0.30.1.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\snappier\\1.0.0\\snappier.1.0.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\system.io.hashing\\8.0.0\\system.io.hashing.8.0.0.nupkg.sha512",
     "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\system.io.pipelines\\9.0.2\\system.io.pipelines.9.0.2.nupkg.sha512",
-    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\yarp.reverseproxy\\2.3.0\\yarp.reverseproxy.2.3.0.nupkg.sha512"
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\system.security.accesscontrol\\5.0.0\\system.security.accesscontrol.5.0.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\yarp.reverseproxy\\2.3.0\\yarp.reverseproxy.2.3.0.nupkg.sha512",
+    "C:\\Users\\RomeoNdlovu\\.nuget\\packages\\zstdsharp.port\\0.7.3\\zstdsharp.port.0.7.3.nupkg.sha512"
   ],
   "logs": []
 }

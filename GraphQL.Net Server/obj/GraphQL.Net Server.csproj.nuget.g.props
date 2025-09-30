@@ -14,6 +14,7 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)hotchocolate.data\15.1.10\build\HotChocolate.Data.props" Condition="Exists('$(NuGetPackageRoot)hotchocolate.data\15.1.10\build\HotChocolate.Data.props')" />
     <Import Project="$(NuGetPackageRoot)hotchocolate.aspnetcore\15.1.10\build\HotChocolate.AspNetCore.props" Condition="Exists('$(NuGetPackageRoot)hotchocolate.aspnetcore\15.1.10\build\HotChocolate.AspNetCore.props')" />
   </ImportGroup>
 </Project>

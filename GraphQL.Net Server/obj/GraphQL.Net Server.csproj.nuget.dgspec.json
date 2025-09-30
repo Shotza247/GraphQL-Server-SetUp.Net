@@ -53,6 +53,14 @@
             "HotChocolate.AspNetCore": {
               "target": "Package",
               "version": "[15.1.10, )"
+            },
+            "HotChocolate.Data": {
+              "target": "Package",
+              "version": "[15.1.10, )"
+            },
+            "MongoDB.Driver": {
+              "target": "Package",
+              "version": "[3.5.0, )"
             }
           },
           "imports": [
