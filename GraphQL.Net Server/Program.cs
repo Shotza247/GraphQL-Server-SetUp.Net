@@ -24,7 +24,7 @@ catch (Exception ex)
     Console.WriteLine($"MongoDB connection failed: {ex}");
 }
 
-// Register MongoClient + Database in DI
+// Register MongoClient + Database
 builder.Services.AddSingleton<IMongoClient>(client);
 builder.Services.AddSingleton(sp =>
 {
