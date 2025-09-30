@@ -1,17 +1,66 @@
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.exe
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\ChilliCream.Nitro.App.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.Abstractions.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Abstractions.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.AspNetCore.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.CostAnalysis.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Execution.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Execution.Abstractions.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Features.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Fetching.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.SyntaxTree.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.Utf8.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.Visitors.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.Web.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Primitives.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Utilities.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Utilities.DependencyInjection.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Validation.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Yarp.ReverseProxy.dll
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\appsettings.Development.json
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\appsettings.json
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.staticwebassets.endpoints.json
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.exe
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.deps.json
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.runtimeconfig.json
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.pdb
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\DnsClient.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.Data.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.Data.Abstractions.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.Data.Primitives.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Authorization.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Data.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Execution.Projections.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Subscriptions.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Subscriptions.InMemory.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Transport.Sockets.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.CursorPagination.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.CursorPagination.Extensions.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Errors.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Mutations.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Queries.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Scalars.Upload.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Shared.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.ObjectPool.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\MongoDB.Bson.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\MongoDB.Driver.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\SharpCompress.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Snappier.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\System.IO.Hashing.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\ZstdSharp.dll
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.csproj.AssemblyReference.cache
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\rpswa.dswa.cache.json
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.AssemblyInfoInputs.cache
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.AssemblyInfo.cs
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.csproj.CoreCompileInputs.cache
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.sourcelink.json
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\rjimswa.dswa.cache.json
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\rjsmrazor.dswa.cache.json
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\rjsmcshtml.dswa.cache.json
@@ -20,54 +69,12 @@ C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\G
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\staticwebassets.build.json.cache
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\staticwebassets.development.json
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\staticwebassets.build.endpoints.json
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL..AE669CD6.Up2Date
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.dll
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\refint\GraphQL.Net Server.dll
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.pdb
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.deps.json
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.runtimeconfig.json
+C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GraphQL.Net Server.pdb
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.genruntimeconfig.cache
 C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\ref\GraphQL.Net Server.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\ChilliCream.Nitro.App.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.Abstractions.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.Data.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.Data.Abstractions.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\GreenDonut.Data.Primitives.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Abstractions.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.AspNetCore.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Authorization.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.CostAnalysis.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Execution.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Execution.Abstractions.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Execution.Projections.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Features.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Fetching.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.SyntaxTree.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.Utf8.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.Visitors.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Language.Web.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Primitives.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Subscriptions.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Subscriptions.InMemory.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Transport.Sockets.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.CursorPagination.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.CursorPagination.Extensions.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Errors.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Mutations.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Queries.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Scalars.Upload.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Types.Shared.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Utilities.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Utilities.DependencyInjection.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\HotChocolate.Validation.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.ObjectPool.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.Options.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Microsoft.Extensions.Primitives.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\System.IO.Hashing.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\bin\Debug\net9.0\Yarp.ReverseProxy.dll
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.csproj.AssemblyReference.cache
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL.Net Server.sourcelink.json
-C:\Users\RomeoNdlovu\Downloads\Grad skills\Role Based\GraphQL Server SetUp.Net\GraphQL.Net Server\obj\Debug\net9.0\GraphQL..AE669CD6.Up2Date
