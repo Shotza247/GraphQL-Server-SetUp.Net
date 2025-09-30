@@ -32,8 +32,8 @@ builder.Services.AddSingleton(sp =>
     return mongoClient.GetDatabase("SBSA-Test"); // 
 });
 
-
-builder.Services.AddGraphQLServer();
+//registering services for graphql
+builder.Services.AddGraphQLServer().AddQueryType<Query>().AddFiltering().AddSorting();
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
