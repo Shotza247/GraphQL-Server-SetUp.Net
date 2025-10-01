@@ -1,5 +1,6 @@
 public class SkillRequiredInput
 {
     public SkillInput? Skill { get; set; } = default!;
-    public int? Sfia_Level { get; set; }
+    [GraphQLName("sfia_Level")]
+    public int? sfia_Level { get; set; }
 }

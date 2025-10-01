@@ -8,5 +8,6 @@ public class Skill
     [BsonElement("name")]
     public string? Name { get; set; }
     [BsonElement("sfia_code")]
-    public string? SFIA_Code { get; set; }
+    [GraphQLName("sfia_Code")]
+    public string? sfia_Code { get; set; }
 }

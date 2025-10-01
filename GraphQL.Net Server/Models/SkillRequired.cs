@@ -5,5 +5,6 @@ public class SkillRequired
     [BsonElement("skill")]
     public Skill? Skill { get; set; }
     [BsonElement("sfia_level")]
-    public int? SFIA_Level { get; set; }
+    [GraphQLName("sfia_Level")]
+    public int? sfia_Level { get; set; }
 }

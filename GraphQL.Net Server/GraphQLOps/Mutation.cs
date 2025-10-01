@@ -21,9 +21,9 @@ public class Mutation
                     {
                         Id = sr.Skill.Id,
                         Name = sr.Skill.Name,
-                        SFIA_Code = sr.Skill.SFIA_Code
+                        sfia_Code = sr.Skill.sfia_Code
                     },
-                    SFIA_Level = sr.SFIA_Level
+                    sfia_Level = sr.sfia_Level
                 }).ToList()
             },
 
@@ -31,12 +31,12 @@ public class Mutation
             Skills = input.Skills.Select(s => new SkillProficiency
             {
                 SkillName = s.SkillName,
-                SFIA_Level = s.SFIA_Level,
+                sfia_Level = s.sfia_Level,
                 Skills = new Skill
                 {
                     Id = s.Skills.Id,
                     Name = s.Skills.Name,
-                    SFIA_Code = s.Skills.SFIA_Code
+                    sfia_Code = s.Skills.sfia_Code
                 }
             }).ToList(),
 
@@ -51,9 +51,9 @@ public class Mutation
                     {
                         Id = sr.Skill.Id,
                         Name = sr.Skill.Name,
-                        SFIA_Code = sr.Skill.SFIA_Code
+                        sfia_Code = sr.Skill.sfia_Code
                     },
-                    SFIA_Level = sr.SFIA_Level
+                    sfia_Level = sr.sfia_Level
                 }).ToList()
             },
 
