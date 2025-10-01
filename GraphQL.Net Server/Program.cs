@@ -33,7 +33,7 @@ builder.Services.AddSingleton(sp =>
 });
 
 //registering services for graphql
-builder.Services.AddGraphQLServer().AddQueryType<Query>().AddFiltering().AddSorting();
+builder.Services.AddGraphQLServer().AddQueryType<Query>().AddMutationType<Mutation>().AddFiltering().AddSorting();
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
