@@ -3,10 +3,10 @@ using MongoDB.Bson.Serialization.Attributes;
 public class SkillProficiency
 {
     [BsonElement("skillname")]
-    public string SkillName { get; set; }
+    public string? SkillName { get; set; }
     [BsonElement("sfia_level")]
-    public int SFIA_Level { get; set; }
+    public int? SFIA_Level { get; set; }
     [BsonElement("skills")]
-    public Skill Skills { get; set; }
+    public Skill? Skills { get; set; }
 
 }   

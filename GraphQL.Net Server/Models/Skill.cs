@@ -4,9 +4,9 @@ public class Skill
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
+    public string? Id { get; set; }
     [BsonElement("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
     [BsonElement("sfia_code")]
-    public string SFIA_Code { get; set; }
+    public string? SFIA_Code { get; set; }
 }

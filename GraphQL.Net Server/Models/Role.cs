@@ -4,10 +4,10 @@ public class Role
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
+    public string? Id { get; set; }
     [BsonElement("title")]
-    public string Title { get; set; }
+    public string? Title { get; set; }
     [BsonElement("skillrequired")]
-    public List<SkillRequired> SkillRequired { get; set; } = new List<SkillRequired>();
+    public List<SkillRequired>? SkillRequired { get; set; } = new List<SkillRequired>();
 
 }

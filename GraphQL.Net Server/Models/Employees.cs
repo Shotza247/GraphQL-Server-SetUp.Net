@@ -5,15 +5,15 @@ public class Employees
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public string Id { get; set; }
+    public string? Id { get; set; }
     [BsonElement("name")]
-    public string Name { get; set; }
+    public string? Name { get; set; }
     [BsonElement("currentrole")]
-    public Role CurrentRole { get; set; }
+    public Role? CurrentRole { get; set; }
     [BsonElement("skills")]
-    public List<SkillProficiency> Skills { get; set; } = new List<SkillProficiency>();
+    public List<SkillProficiency>?  Skills { get; set; } = new List<SkillProficiency>();
     [BsonElement("desiredrole")]
-    public Role DesiredRole { get; set; }
+    public Role? DesiredRole { get; set; }
     [BsonElement("ismentor")]
-    public bool IsMentor { get; set; }
+    public bool? IsMentor { get; set; }
 }
