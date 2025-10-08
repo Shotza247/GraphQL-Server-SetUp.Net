@@ -4,7 +4,7 @@ public class Mutation
 {
     public async Task<Employees> AddEmployee(AddEmployeeInput input, [Service] IMongoDatabase database)
     {
-        var collection = database.GetCollection<Employees>("Employees");
+        var collection = database.GetCollection<Employees>("Employee");
 
         var employee = new Employees
         {
