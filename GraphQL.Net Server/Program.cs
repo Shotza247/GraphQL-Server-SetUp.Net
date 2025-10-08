@@ -29,11 +29,16 @@ builder.Services.AddSingleton<IMongoClient>(client);
 builder.Services.AddSingleton(sp =>
 {
     var mongoClient = sp.GetRequiredService<IMongoClient>();
-    return mongoClient.GetDatabase("SBSA-Test"); // 
+    return mongoClient.GetDatabase("Standard-Bank_Test"); // 
 });
 
 //registering services for graphql
-builder.Services.AddGraphQLServer().AddQueryType<Query>().AddMutationType<Mutation>().AddFiltering().AddSorting();
+builder.Services.AddGraphQLServer()
+    .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = true)
+    .AddQueryType<Query>()
+    .AddMutationType<Mutation>()
+    .AddFiltering()
+    .AddSorting();
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
