@@ -6,8 +6,11 @@ using HotChocolate.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
-const string connectionUri = "mongodb+srv://jabulanindlovu360_db_user:xVcjEhfrZ3Rf2Kye@sbsa-test.wmi9dqy.mongodb.net/?retryWrites=true&w=majority&appName=SBSA-Test";
-
+const var mongoConnectionString = builder.Configuration["MongoDB:ConnectionString"]
+    ?? throw new InvalidOperationException(
+        "MongoDB:ConnectionString is not configured. Use User Secrets or environment variables.");
+var mongoDatabaseName = builder.Configuration["MongoDB:DatabaseName"]
+    ?? "Client_CollectionDB";
 // Setup MongoDB client
 var settings = MongoClientSettings.FromConnectionString(connectionUri);
 settings.ServerApi = new ServerApi(ServerApiVersion.V1);
@@ -29,12 +32,12 @@ builder.Services.AddSingleton<IMongoClient>(client);
 builder.Services.AddSingleton(sp =>
 {
     var mongoClient = sp.GetRequiredService<IMongoClient>();
-    return mongoClient.GetDatabase("Standard-Bank_Test"); // 
+    return mongoClient.GetDatabase(mongoDatabaseName); // 
 });
 
 //registering services for graphql
 builder.Services.AddGraphQLServer()
-    .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = true)
+    .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = builder.Environment.IsDevelopment())
     .AddQueryType<Query>()
     .AddMutationType<Mutation>()
     .AddFiltering()
