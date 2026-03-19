@@ -1,41 +1,45 @@
-# 🍫 GraphQL.Net Server — Employee Skills API
+# GraphQL .NET Server — Employee Skills API
 * After a successful Python prototype that the Lead Solution Architect approved, I went on to build the .Net Version for its scalability as part of a production ready POC/MVP.
 ---
-A **GraphQL API** built with [HotChocolate](https://chillicream.com/docs/hotchocolate) on **.NET 9** and **MongoDB Atlas**, designed to manage employees, their current roles, desired roles, and SFIA skill proficiencies.
+A **GraphQL API** built with [Hot Chocolate](https://chillicream.com/docs/hotchocolate) on ASP.NET Core 9 and MongoDB, designed to manage employees, their current roles, desired roles, and SFIA skill proficiencies.
 
-## 📋 Table of Contents
+> **Note on credentials:** An earlier version of this repository contained a MongoDB Atlas connection string as part of a fictional client scenario used for development and demonstration purposes only. The fictional client — **Standard Bank (SBSA-Test)** — and all associated connection details were placeholder values created specifically to give the project a realistic, professional context during its initial build phase. Those credentials have since been removed from the codebase and replaced with a secure configuration-driven approach. No real client data was ever at risk.
+
+---
+
+## Table of Contents
 
 - [Overview](#overview)
 - [Tech Stack](#tech-stack)
 - [Project Structure](#project-structure)
 - [Data Model](#data-model)
 - [GraphQL Schema](#graphql-schema)
-- [API Operations](#api-operations)
 - [Request Flow](#request-flow)
 - [Getting Started](#getting-started)
-- [Example Queries](#example-queries)
-- [Known Issues & Notes](#known-issues--notes)
+- [Configuration](#configuration)
+- [GraphQL Operations](#graphql-operations)
+- [Changelog & Resolved Issues](#changelog--resolved-issues)
+- [Roadmap](#roadmap)
 
 ---
 
 ## Overview
 
-This server exposes a GraphQL endpoint that allows clients to **query** and **mutate** employee records stored in a MongoDB Atlas cluster. Each employee has a current role, a desired (target) role, and a list of personal skill proficiencies — all mapped to the [SFIA (Skills Framework for the Information Age)](https://sfia-online.org) standard using codes and levels.
+This server exposes a GraphQL endpoint (`/graphql`) alongside an interactive **Nitro IDE** (provided by ChilliCream) at the same path. It connects to a MongoDB Atlas cluster and supports querying and mutating `Employee` documents — each of which embeds rich nested data about an employee's current role, desired role, and their individual SFIA skill proficiencies.
 
-The API is built code-first using HotChocolate's annotation-based approach, with filtering and sorting enabled out of the box.
+The architecture is intentionally lean: no ORM, no repository abstraction layer, just direct MongoDB driver calls wired into a code-first HotChocolate schema. This keeps the dependency graph shallow and the data flow easy to trace end-to-end.
 
 ---
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Runtime | .NET 9 (ASP.NET Core) |
-| GraphQL Server | HotChocolate v15.1.10 |
-| Database | MongoDB Atlas (Driver v3.5.0) |
-| GraphQL IDE | Nitro (Banana Cake Pop) — bundled |
-| Dev IDE | VS Code |
-| Language | C# 13 (nullable enabled) |
+| Layer | Technology | Version |
+|---|---|---|
+| Runtime | .NET / ASP.NET Core | 9.0 |
+| GraphQL Server | HotChocolate.AspNetCore | 15.1.10 |
+| GraphQL Data | HotChocolate.Data | 15.1.10 |
+| Database Driver | MongoDB.Driver | 3.5.0 |
+| Database Host | MongoDB Atlas | — |
 
 ---
 
@@ -43,267 +47,256 @@ The API is built code-first using HotChocolate's annotation-based approach, with
 
 ```
 GraphQL.Net Server/
-├── Program.cs                    # App bootstrap, DI, MongoDB + GraphQL setup
 ├── GraphQLOps/
-│   ├── Query.cs                  # All read operations (queries)
-│   └── Mutation.cs               # All write operations (mutations)
-└── Models/
-    ├── Employees.cs              # MongoDB document model
-    ├── Role.cs                   # Embedded role document
-    ├── Skill.cs                  # Skill reference (name + SFIA code)
-    ├── SkillProficiency.cs       # Employee's personal skill + level
-    ├── SkillRequired.cs          # Skill requirement on a role
-    ├── AddEmployeeInput.cs       # Mutation input type
-    ├── RoleInput.cs              # Nested input for role
-    ├── SkillInput.cs             # Nested input for skill
-    ├── SkillProficiencyInput.cs  # Nested input for proficiency
-    └── SkillRequiredInput.cs     # Nested input for skill requirement
+│   ├── Query.cs               # Read operations — GetEmployees, GetEmployeeById
+│   └── Mutation.cs            # Write operations — AddEmployee
+├── Models/
+│   ├── Employees.cs           # MongoDB document model (domain layer)
+│   ├── Role.cs                # Embedded role subdocument
+│   ├── Skill.cs               # Skill reference with SFIA code
+│   ├── SkillProficiency.cs    # Employee skill paired with SFIA proficiency level
+│   ├── SkillRequired.cs       # Role requirement: a skill at a minimum level
+│   ├── AddEmployeeInput.cs    # Root GraphQL mutation input type
+│   ├── RoleInput.cs           # Nested input type for roles
+│   ├── SkillInput.cs          # Nested input type for skills
+│   ├── SkillProficiencyInput.cs
+│   └── SkillRequiredInput.cs
+├── Program.cs                 # Application bootstrap, DI registration, middleware
+└── appsettings.json           # Non-sensitive configuration structure
 ```
 
 ---
 
 ## Data Model
 
-The domain is centred on an `Employee` document. Each employee embeds two `Role` documents (current and desired) and a list of personal `SkillProficiency` entries. Each role in turn embeds a list of `SkillRequired` entries, and each of those references a `Skill` object.
-
-### Entity Relationship Diagram
+The entire employee record is stored as a **single embedded MongoDB document** — there are no foreign-key joins or cross-collection lookups at query time. All role, skill, and proficiency data lives nested inside the employee record, which makes reads fast and the document self-contained.
 
 ```mermaid
 erDiagram
     EMPLOYEES {
-        string Id PK
+        ObjectId Id PK
         string Name
         bool IsMentor
     }
-
     ROLE {
-        string Id
+        ObjectId Id
         string Title
     }
-
     SKILL {
-        string Id
+        ObjectId Id
         string Name
         string sfia_Code
     }
-
-    SKILL_REQUIRED {
-        int sfia_Level
-    }
-
     SKILL_PROFICIENCY {
         string SkillName
         int sfia_Level
     }
+    SKILL_REQUIRED {
+        int sfia_Level
+    }
 
-    EMPLOYEES ||--|| ROLE : "currentRole"
-    EMPLOYEES ||--|| ROLE : "desiredRole"
-    EMPLOYEES ||--o{ SKILL_PROFICIENCY : "skills"
-    ROLE ||--o{ SKILL_REQUIRED : "skillRequired"
-    SKILL_REQUIRED ||--|| SKILL : "skill"
-    SKILL_PROFICIENCY ||--|| SKILL : "skills"
+    EMPLOYEES ||--|| ROLE : "currentRole (embedded)"
+    EMPLOYEES ||--|| ROLE : "desiredRole (embedded)"
+    EMPLOYEES ||--o{ SKILL_PROFICIENCY : "skills (embedded list)"
+    SKILL_PROFICIENCY ||--|| SKILL : "skill ref (embedded)"
+    ROLE ||--o{ SKILL_REQUIRED : "skillRequired (embedded list)"
+    SKILL_REQUIRED ||--|| SKILL : "skill ref (embedded)"
 ```
 
-### MongoDB Document Shape
+### Class Relationship Diagram
 
-Because this is a document database, the `Employee` document is fully **denormalised** — roles and skills are embedded directly rather than referenced by foreign key. This is what a stored document looks like conceptually:
-
-```json
-{
-  "_id": "ObjectId(...)",
-  "name": "Jane Doe",
-  "ismentor": true,
-  "currentrole": {
-    "_id": "ObjectId(...)",
-    "title": "Software Engineer",
-    "skillrequired": [
-      {
-        "skill": { "name": "Software Development", "sfia_code": "PROG" },
-        "sfia_level": 4
-      }
-    ]
-  },
-  "desiredrole": {
-    "_id": "ObjectId(...)",
-    "title": "Tech Lead",
-    "skillrequired": [
-      {
-        "skill": { "name": "Systems Design", "sfia_code": "ARCH" },
-        "sfia_level": 5
-      }
-    ]
-  },
-  "skills": [
-    {
-      "skillname": "Software Development",
-      "sfia_level": 4,
-      "skills": { "name": "Software Development", "sfia_code": "PROG" }
+```mermaid
+classDiagram
+    class Employees {
+        +string? Id
+        +string? Name
+        +Role? CurrentRole
+        +List~SkillProficiency~ Skills
+        +Role? DesiredRole
+        +bool? IsMentor
     }
-  ]
-}
+
+    class Role {
+        +string? Id
+        +string? Title
+        +List~SkillRequired~ SkillRequired
+    }
+
+    class Skill {
+        +string? Id
+        +string? Name
+        +string? sfia_Code
+    }
+
+    class SkillProficiency {
+        +string? SkillName
+        +int? sfia_Level
+        +Skill? Skills
+    }
+
+    class SkillRequired {
+        +Skill? Skill
+        +int? sfia_Level
+    }
+
+    Employees "1" --> "1" Role : currentRole
+    Employees "1" --> "1" Role : desiredRole
+    Employees "1" --> "0..*" SkillProficiency : skills
+    Role "1" --> "0..*" SkillRequired : skillRequired
+    SkillProficiency "1" --> "1" Skill
+    SkillRequired "1" --> "1" Skill
+```
+
+### Input Type Separation
+
+The project maintains a deliberate split between **domain models** (used for MongoDB reads/writes, decorated with BSON attributes) and **input types** (used for GraphQL mutations, with no storage concerns). This separation is important because HotChocolate treats input types differently from output types in schema generation.
+
+```mermaid
+graph LR
+    subgraph GraphQL Input Layer
+        AI[AddEmployeeInput]
+        RI[RoleInput]
+        SPI[SkillProficiencyInput]
+        SI[SkillInput]
+        SRI[SkillRequiredInput]
+        AI --> RI
+        AI --> SPI
+        RI --> SRI
+        SPI --> SI
+        SRI --> SI
+    end
+
+    subgraph Domain and MongoDB Layer
+        E[Employees]
+        R[Role]
+        SP[SkillProficiency]
+        SK[Skill]
+        SR[SkillRequired]
+        E --> R
+        E --> SP
+        R --> SR
+        SP --> SK
+        SR --> SK
+    end
+
+    AI -- "Mutation.cs maps to" --> E
 ```
 
 ---
 
 ## GraphQL Schema
 
-The schema is generated automatically by HotChocolate at runtime from your C# types. Here is the conceptual SDL representation:
+The schema is **code-first** — HotChocolate infers all GraphQL types from your C# class definitions automatically, using reflection and attribute conventions. You do not write a `.graphql` schema file by hand.
 
-```graphql
-type Employees {
-  id: String
-  name: String
-  currentRole: Role
-  desiredRole: Role
-  skills: [SkillProficiency]
-  isMentor: Boolean
-}
+```mermaid
+graph TD
+    subgraph Schema Root
+        Q[Query]
+        M[Mutation]
+    end
 
-type Role {
-  id: String
-  title: String
-  skillRequired: [SkillRequired]
-}
+    subgraph Query Operations
+        Q -->|getEmployees| EL["[Employees]"]
+        Q -->|getEmployeeById - id: String| E["Employees?"]
+    end
 
-type SkillRequired {
-  skill: Skill
-  sfia_Level: Int
-}
+    subgraph Mutation Operations
+        M -->|addEmployee - input: AddEmployeeInput| E2["Employees"]
+    end
 
-type SkillProficiency {
-  skillName: String
-  sfia_Level: Int
-  skills: Skill
-}
+    subgraph Employees Type
+        EL --> F1["id: String"]
+        EL --> F2["name: String"]
+        EL --> F3["currentRole: Role"]
+        EL --> F4["desiredRole: Role"]
+        EL --> F5["skills: [SkillProficiency]"]
+        EL --> F6["isMentor: Boolean"]
+    end
 
-type Skill {
-  id: String
-  name: String
-  sfia_Code: String
-}
+    subgraph Role Type
+        F3 --> R1["id: String"]
+        F3 --> R2["title: String"]
+        F3 --> R3["skillRequired: [SkillRequired]"]
+    end
 
-type Query {
-  employees: [Employees!]!
-  employeeById(id: String!): Employees
-}
+    subgraph SkillRequired Type
+        R3 --> SR1["sfia_Level: Int"]
+        R3 --> SR2["skill: Skill"]
+    end
 
-type Mutation {
-  addEmployee(input: AddEmployeeInput!): Employees!
-}
+    subgraph Skill Type
+        SR2 --> SK1["id: String"]
+        SR2 --> SK2["name: String"]
+        SR2 --> SK3["sfia_Code: String"]
+    end
 ```
-
----
-
-## API Operations
-
-### Queries
-
-**`employees`** — Returns all employee documents from the `Employees` collection. This operation supports filtering and sorting, which are enabled via HotChocolate's `.AddFiltering()` and `.AddSorting()` middleware.
-
-**`employeeById(id)`** — Returns a single employee by their MongoDB ObjectId string. Returns `null` if no match is found.
-
-### Mutations
-
-**`addEmployee(input)`** — Inserts a new employee document into the collection and returns the created document, including the MongoDB-generated `_id`.
-
-The `AddEmployeeInput` type mirrors the full `Employees` shape, using separate `*Input` types for all nested objects. This separation between the domain model and the input model is important — it prevents HotChocolate from exposing MongoDB BSON attributes (like `[BsonId]`) on the input side of the schema.
 
 ---
 
 ## Request Flow
 
-### Query Flow
-
-The following diagram traces what happens from the moment a client sends a `employees` query to when the response is returned.
+### Query Flow — GetEmployees
 
 ```mermaid
 sequenceDiagram
     participant Client
-    participant HotChocolate
-    participant Query.cs
-    participant MongoDB
+    participant ASP as ASP.NET Core
+    participant HC as HotChocolate
+    participant Query as Query.cs
+    participant Mongo as MongoDB Atlas
 
-    Client->>HotChocolate: POST /graphql { query: "{ employees { name } }" }
-    HotChocolate->>HotChocolate: Parse & validate query
-    HotChocolate->>Query.cs: Invoke GetEmployees(IMongoDatabase)
-    Query.cs->>MongoDB: collection.Find(_ => true).ToListAsync()
-    MongoDB-->>Query.cs: List<Employees>
-    Query.cs-->>HotChocolate: List<Employees>
-    HotChocolate->>HotChocolate: Apply field selection (projection)
-    HotChocolate-->>Client: { "data": { "employees": [...] } }
+    Client->>ASP: POST /graphql { query: "{ employees { id name ... } }" }
+    ASP->>HC: Route to GraphQL middleware
+    HC->>HC: Parse and validate query document
+    HC->>Query: GetEmployees(IMongoDatabase)
+    Query->>Mongo: collection.Find(_ => true).ToListAsync()
+    Mongo-->>Query: List of Employees documents
+    Query-->>HC: List of Employees
+    HC->>HC: Project only the requested fields into JSON
+    HC-->>ASP: 200 OK { data: { employees: [...] } }
+    ASP-->>Client: JSON response
 ```
 
-### Mutation Flow
+### Mutation Flow — AddEmployee
 
 ```mermaid
 sequenceDiagram
     participant Client
-    participant HotChocolate
-    participant Mutation.cs
-    participant MongoDB
+    participant ASP as ASP.NET Core
+    participant HC as HotChocolate
+    participant Mutation as Mutation.cs
+    participant Mongo as MongoDB Atlas
 
-    Client->>HotChocolate: POST /graphql { mutation addEmployee(...) }
-    HotChocolate->>HotChocolate: Parse, validate & deserialize input
-    HotChocolate->>Mutation.cs: Invoke AddEmployee(AddEmployeeInput, IMongoDatabase)
-    Mutation.cs->>Mutation.cs: Map AddEmployeeInput → Employees domain object
-    Mutation.cs->>MongoDB: collection.InsertOneAsync(employee)
-    MongoDB-->>Mutation.cs: (assigns _id to employee object)
-    Mutation.cs-->>HotChocolate: Employees (with new Id)
-    HotChocolate-->>Client: { "data": { "addEmployee": { "id": "...", ... } } }
+    Client->>ASP: POST /graphql { mutation: "addEmployee(input: { ... })" }
+    ASP->>HC: Route to GraphQL middleware
+    HC->>HC: Parse, validate and coerce input types
+    HC->>Mutation: AddEmployee(AddEmployeeInput, IMongoDatabase)
+    Mutation->>Mutation: Map AddEmployeeInput to Employees domain object
+    Mutation->>Mongo: collection.InsertOneAsync(employee)
+    Mongo-->>Mutation: Write acknowledged + Id assigned
+    Mutation-->>HC: Employees object with new MongoDB-generated Id
+    HC->>HC: Project requested response fields into JSON
+    HC-->>Client: { data: { addEmployee: { id, name, ... } } }
 ```
 
-### Application Bootstrap Flow
-
-This shows how `Program.cs` wires everything together on startup.
+### Application Startup and DI Wiring
 
 ```mermaid
 flowchart TD
-    A([dotnet run]) --> B[WebApplication.CreateBuilder]
-    B --> C[Configure MongoClientSettings\nfrom connection string]
-    C --> D[new MongoClient]
-    D --> E{Ping admin DB}
-    E -->|Success| F[Log: Successfully connected]
-    E -->|Failure| G[Log: Connection failed]
-    F --> H[Register IMongoClient as Singleton]
-    G --> H
-    H --> I[Register IMongoDatabase as Singleton\n'Standard-Bank_Test']
-    I --> J[AddGraphQLServer]
-    J --> K[AddQueryType< Query >]
-    K --> L[AddMutationType< Mutation >]
-    L --> M[AddFiltering + AddSorting]
-    M --> N[app.MapGraphQL — /graphql]
-    N --> O([Server Running\nhttp://localhost:5280])
-```
-
----
-
-## Input Type Mapping
-
-One design pattern worth understanding is the **two-type system** this API uses for every entity. HotChocolate needs separate classes for *output types* (returned from queries) and *input types* (accepted by mutations). The mapping happens manually inside `Mutation.cs`.
-
-```mermaid
-flowchart LR
-    subgraph Input Types ["Input Types (GraphQL Mutation)"]
-        AI[AddEmployeeInput]
-        RI[RoleInput]
-        SPI[SkillProficiencyInput]
-        SRI[SkillRequiredInput]
-        SI[SkillInput]
-    end
-
-    subgraph Domain Types ["Domain / Output Types (MongoDB)"]
-        E[Employees]
-        R[Role]
-        SP[SkillProficiency]
-        SR[SkillRequired]
-        SK[Skill]
-    end
-
-    AI -->|maps to| E
-    RI -->|maps to| R
-    SPI -->|maps to| SP
-    SRI -->|maps to| SR
-    SI -->|maps to| SK
+    A[Program.cs starts] --> B[Create WebApplicationBuilder]
+    B --> C[Read MongoDB config from IConfiguration\nappsettings / User Secrets / env vars]
+    C --> D[Build MongoClientSettings from connection string]
+    D --> E[Instantiate MongoClient]
+    E --> F{Ping admin database}
+    F -->|Success| G[Log: Successfully connected to MongoDB]
+    F -->|Fail| H[Log: Connection failed with error message]
+    G & H --> I[Register IMongoClient as Singleton]
+    I --> J[Register IMongoDatabase as Singleton\nusing configured DatabaseName]
+    J --> K[Register GraphQL Server\nQuery + Mutation + Filtering + Sorting\nIncludeExceptionDetails only in Development]
+    K --> L[Build WebApplication]
+    L --> M[Map GET / to Hello World]
+    M --> N[MapGraphQL to /graphql]
+    N --> O[app.Run - begin accepting requests]
 ```
 
 ---
@@ -312,35 +305,64 @@ flowchart LR
 
 ### Prerequisites
 
-You will need the [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0) installed, and network access to the MongoDB Atlas cluster configured in `Program.cs`.
+You will need the [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0), a MongoDB Atlas cluster (or a locally running MongoDB instance), and an editor such as Visual Studio 2022, VS Code, or JetBrains Rider.
 
-### Running the Server
-
-```bash
-# Clone the repository
-git clone <your-repo-url>
-cd "GraphQL.Net Server"
-
-# Restore packages and run
-dotnet run
-```
-
-The server will start at `http://localhost:5280`. You can open the **Nitro GraphQL IDE** by navigating to `http://localhost:5280/graphql` in your browser — it is bundled automatically with HotChocolate.AspNetCore.
-
-### HTTPS
-
-To run with HTTPS (recommended for production), use:
+### Clone and Run
 
 ```bash
-dotnet run --launch-profile https
-# Runs at https://localhost:7228
+git clone https://github.com/Shotza247/GraphQL-Server-SetUp.Net.git
+cd "GraphQL Server SetUp.Net"
+
+# Restore all NuGet packages
+dotnet restore
+
+# Store your MongoDB credentials as local User Secrets (never committed to git)
+dotnet user-secrets init --project "GraphQL.Net Server"
+dotnet user-secrets set "MongoDB:ConnectionString" "mongodb+srv://<user>:<password>@<cluster>.mongodb.net/" \
+  --project "GraphQL.Net Server"
+dotnet user-secrets set "MongoDB:DatabaseName" "YourDatabaseName" \
+  --project "GraphQL.Net Server"
+
+# Run in Development mode
+dotnet run --project "GraphQL.Net Server"
 ```
+
+The server starts on:
+- HTTP: `http://localhost:5280`
+- HTTPS: `https://localhost:7228`
+
+Navigate to `http://localhost:5280/graphql` to open the **Nitro GraphQL IDE** in your browser.
 
 ---
 
-## Example Queries
+## Configuration
 
-### Fetch All Employees
+Sensitive values such as your MongoDB connection string are kept entirely out of source control using **.NET User Secrets** locally and **environment variables** in production or CI/CD pipelines. The `appsettings.json` file only defines the configuration structure — it never holds real credentials.
+
+**`appsettings.json`** — safe to commit, contains no real values:
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "MongoDB": {
+    "ConnectionString": "mongodb+srv://<user>:<password>@<cluster>.mongodb.net/",
+    "DatabaseName": "YourDatabaseName"
+  }
+}
+```
+
+In production, override `MongoDB__ConnectionString` and `MongoDB__DatabaseName` using environment variables (ASP.NET Core maps double-underscore `__` to the colon `:` separator automatically).
+
+---
+
+## GraphQL Operations
+
+### Query: Get All Employees
 
 ```graphql
 query GetAllEmployees {
@@ -351,11 +373,11 @@ query GetAllEmployees {
     currentRole {
       title
       skillRequired {
+        sfia_Level
         skill {
           name
           sfia_Code
         }
-        sfia_Level
       }
     }
     desiredRole {
@@ -365,6 +387,7 @@ query GetAllEmployees {
       skillName
       sfia_Level
       skills {
+        name
         sfia_Code
       }
     }
@@ -372,11 +395,12 @@ query GetAllEmployees {
 }
 ```
 
-### Fetch Employee by ID
+### Query: Get Employee by ID
 
 ```graphql
-query GetEmployee {
-  employeeById(id: "64f1a2b3c4d5e6f7a8b9c0d1") {
+query GetEmployee($id: String!) {
+  employeeById(id: $id) {
+    id
     name
     currentRole {
       title
@@ -388,43 +412,14 @@ query GetEmployee {
 }
 ```
 
-### Add a New Employee
+### Mutation: Add Employee
 
 ```graphql
-mutation CreateEmployee {
-  addEmployee(input: {
-    name: "Jane Doe"
-    isMentor: false
-    currentRole: {
-      id: ""
-      title: "Junior Developer"
-      skillRequired: [
-        {
-          skill: { id: "", name: "Programming", sfia_Code: "PROG" }
-          sfia_Level: 3
-        }
-      ]
-    }
-    desiredRole: {
-      id: ""
-      title: "Senior Developer"
-      skillRequired: [
-        {
-          skill: { id: "", name: "Systems Design", sfia_Code: "ARCH" }
-          sfia_Level: 5
-        }
-      ]
-    }
-    skills: [
-      {
-        skillName: "Programming"
-        sfia_Level: 3
-        skills: { id: "", name: "Programming", sfia_Code: "PROG" }
-      }
-    ]
-  }) {
+mutation AddEmployee($input: AddEmployeeInput!) {
+  addEmployee(input: $input) {
     id
     name
+    isMentor
     currentRole {
       title
     }
@@ -432,28 +427,86 @@ mutation CreateEmployee {
 }
 ```
 
+**Example variables:**
+```json
+{
+  "input": {
+    "name": "Jane Smith",
+    "isMentor": true,
+    "currentRole": {
+      "id": "",
+      "title": "Senior Developer",
+      "skillRequired": [
+        {
+          "sfia_Level": 5,
+          "skill": {
+            "id": "",
+            "name": "Software Development",
+            "sfia_Code": "PROG"
+          }
+        }
+      ]
+    },
+    "desiredRole": {
+      "id": "",
+      "title": "Technical Architect",
+      "skillRequired": []
+    },
+    "skills": [
+      {
+        "skillName": "C#",
+        "sfia_Level": 5,
+        "skills": {
+          "id": "",
+          "name": "Software Development",
+          "sfia_Code": "PROG"
+        }
+      }
+    ]
+  }
+}
+```
+
 ---
 
-## Known Issues & Notes
+## Changelog & Resolved Issues
 
-**Collection name mismatch.** There is a bug in the current codebase worth flagging: `Mutation.cs` inserts documents into a collection named `"Employee"` (singular), while both methods in `Query.cs` read from `"Employees"` (plural). This means that documents added via the mutation will not appear in query results. Both should use the same collection name — `"Employees"` is the more conventional choice.
+The following issues were identified during code review and have been fully resolved in the current version. They are documented here for transparency and as a useful reference for anyone reading the git history.
 
-**Connection string in source code.** The MongoDB Atlas connection URI (including credentials) is hardcoded in `Program.cs`. Before pushing to a public repository, this should be moved to `appsettings.json` or — better still — to environment variables or a secrets manager, and the raw credentials should be rotated.
+```mermaid
+graph TD
+    subgraph Resolved
+        R1["✅ Collection name mismatch\nMutation now writes to 'Employees'\nmatching the Query collection"]
+        R2["✅ Input type separation\nAddEmployeeInput now uses RoleInput\nand SkillProficiencyInput correctly"]
+        R3["✅ C# property casing\nSfia_Level and Sfia_Code\naccessed with correct Pascal casing"]
+        R4["✅ Hardcoded credentials removed\nConnection string moved to\nIConfiguration with User Secrets support"]
+    end
+```
 
-**No authentication or authorisation.** The GraphQL endpoint is currently open with no auth layer. HotChocolate ships with a built-in `@authorize` directive that integrates with ASP.NET Core's policy-based auth system, which would be the natural next step.
+**Resolved: MongoDB collection name mismatch** — `Mutation.cs` was writing new employee documents to a collection named `"Employee"` (singular) while `Query.cs` was reading from `"Employees"` (plural). In MongoDB, these are entirely separate collections, meaning every `addEmployee` call appeared to succeed but the created document would never appear in any query result. Both operations now consistently target `"Employees"`.
 
-**Filtering and sorting are registered but not yet decorated.** The `.AddFiltering()` and `.AddSorting()` calls in `Program.cs` enable the middleware, but the resolver methods in `Query.cs` need `[UseFiltering]` and `[UseSorting]` attribute decorators to actually expose those capabilities to clients.
+**Resolved: Input type layer bypassed** — `AddEmployeeInput` was declaring its `CurrentRole`, `DesiredRole`, and `Skills` properties using the domain model types `Role` and `SkillProficiency`, which carry BSON serialisation attributes intended for the database layer. This bypassed the dedicated `RoleInput` and `SkillProficiencyInput` classes entirely and risked schema generation conflicts in HotChocolate. All properties now correctly reference their corresponding GraphQL input types.
+
+**Resolved: C# property casing compile error** — `Mutation.cs` was accessing `s.sfia_Level` and `sr.Skill.sfia_Code` with a lowercase `s`, while the actual input type properties are declared as `Sfia_Level` and `Sfia_Code` (Pascal case). C# property access is case-sensitive, so this was a compile-time error. All property access expressions have been corrected throughout the mutation handler.
+
+**Resolved: Hardcoded credentials removed** — the MongoDB Atlas connection string (created for a fictional client test-case scenario — see the note at the top of this document) was previously embedded directly in `Program.cs`. This has been replaced with a fully configuration-driven approach using `IConfiguration`, .NET User Secrets for local development, and environment variables for deployment. `IncludeExceptionDetails` has also been scoped to the Development environment only, preventing internal stack traces from reaching clients in production.
 
 ---
 
-## Dependencies
+## Roadmap
 
-| Package | Version | Purpose |
-|---|---|---|
-| `HotChocolate.AspNetCore` | 15.1.10 | GraphQL server + Nitro IDE |
-| `HotChocolate.Data` | 15.1.10 | Filtering, sorting, projections |
-| `MongoDB.Driver` | 3.5.0 | MongoDB Atlas client |
+The following improvements would meaningfully strengthen the project going forward.
+
+**Update and Delete Mutations** — adding `UpdateEmployee` and `DeleteEmployee` mutations would complete the CRUD surface. HotChocolate supports strongly-typed update input patterns that map cleanly to MongoDB's `FindOneAndUpdateAsync` and `DeleteOneAsync`.
+
+**Normalise Roles and Skills into Separate Collections** — currently roles and skills are fully embedded inside each employee document. For a true role-based career-pathing system, extracting roles into their own collection and referencing them by ID would prevent duplication and make global role definition updates atomic across all employees.
+
+**Authentication and Authorisation** — HotChocolate supports `[Authorize]` attribute-based policies via `HotChocolate.Authorization`. Pairing this with ASP.NET Core's JWT bearer middleware would secure the API for multi-tenant use with minimal additional wiring.
+
+**Pagination** — `HotChocolate.Data` provides cursor-based pagination out of the box. Adding `.UsePaging()` to the `GetEmployees` resolver prevents unbounded result sets as the employee count grows, and is a one-line change.
+
+**Integration Tests** — an xUnit test project using `Testcontainers.MongoDb` would enable deterministic integration tests that spin up a real MongoDB instance in Docker, without depending on a live Atlas cluster for every CI run.
 
 ---
 
-*Built with .NET 9 · HotChocolate 15 · MongoDB Atlas*
+> Built on [Hot Chocolate 15](https://chillicream.com/docs/hotchocolate) · [MongoDB .NET Driver 3](https://www.mongodb.com/docs/drivers/csharp/) · ASP.NET Core 9
