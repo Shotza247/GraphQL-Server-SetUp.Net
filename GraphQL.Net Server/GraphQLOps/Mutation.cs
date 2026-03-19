@@ -11,7 +11,7 @@ public class Mutation
             Name = input.Name,
 
             // Map CurrentRole
-            CurrentRole = new Role
+            CurrentRole = input.CurrentRole == null ? null : new Role
             {
                 Id = input.CurrentRole.Id,
                 Title = input.CurrentRole.Title,
@@ -21,37 +21,37 @@ public class Mutation
                     {
                         Id = sr.Skill.Id,
                         Name = sr.Skill.Name,
-                        sfia_Code = sr.Skill.sfia_Code
+                        sfia_Code = sr.Skill.Sfia_Code
                     },
                     sfia_Level = sr.sfia_Level
                 }).ToList()
             },
 
             // Map Skills
-            Skills = input.Skills.Select(s => new SkillProficiency
+            Skills = input.Skills?.Select(s => new SkillProficiency
             {
                 SkillName = s.SkillName,
-                sfia_Level = s.sfia_Level,
-                Skills = new Skill
+                sfia_Level = s.Sfia_Level,
+                Skills = s.Skills == null ? null :new Skill
                 {
                     Id = s.Skills.Id,
                     Name = s.Skills.Name,
-                    sfia_Code = s.Skills.sfia_Code
+                    sfia_Code = s.Skills.Sfia_Code
                 }
             }).ToList(),
 
             // Map DesiredRole
-            DesiredRole = new Role
+            DesiredRole = input.DesiredRole == null ? null : new Role
             {
                 Id = input.DesiredRole.Id,
                 Title = input.DesiredRole.Title,
-                SkillRequired = input.DesiredRole.SkillRequired.Select(sr => new SkillRequired
+                SkillRequired = input.DesiredRole.SkillRequired?.Select(sr => new SkillRequired
                 {
-                    Skill = new Skill
+                    Skill = sr.Skill == null ? null : new Skill
                     {
                         Id = sr.Skill.Id,
                         Name = sr.Skill.Name,
-                        sfia_Code = sr.Skill.sfia_Code
+                        sfia_Code = sr.Skill.Sfia_Code
                     },
                     sfia_Level = sr.sfia_Level
                 }).ToList()
